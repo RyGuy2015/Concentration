@@ -14,6 +14,10 @@ class ViewController: UIViewController
 
     @IBOutlet weak var flipCountLabel: UILabel!
     
+    @IBOutlet weak var scoreLabel: UILabel!
+    
+    @IBOutlet weak var newGameButton: UIButton!
+    
     @IBOutlet var cardButtons: [UIButton]!
     
     @IBOutlet var backgroundView: UIView!
@@ -23,6 +27,11 @@ class ViewController: UIViewController
     var emoji = [Int:String]()
     
     var currentTheme = Theme(cardColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), backgroundColor:#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), themeEmojis: ["❄️","⛄️","🏂","🌨","🎄","🎅🏻","🎁","🍭","🍬","🧝‍♂️"])
+    
+    convenience init() {
+        self.init()
+        newGame()
+    }
     
     @IBAction func touchCard(_ sender: UIButton) {
         game.changeScore()
@@ -66,6 +75,9 @@ class ViewController: UIViewController
         currentTheme = availableThemes["Winter"]!
         backgroundView.backgroundColor = availableThemes["Winter"]!.backgroundColor
         emojiChoices = availableThemes["Winter"]!.themeEmojis
+        flipCountLabel.textColor = availableThemes["Winter"]!.cardColor
+        scoreLabel.textColor = availableThemes["Winter"]!.cardColor
+        newGameButton.setTitleColor(availableThemes["Winter"]!.cardColor, for: UIControlState.normal)
         
     }
     
