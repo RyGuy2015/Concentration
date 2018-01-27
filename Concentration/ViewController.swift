@@ -24,7 +24,6 @@ class ViewController: UIViewController
     
     var currentTheme = Theme(cardColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), backgroundColor:#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), themeEmojis: ["❄️","⛄️","🏂","🌨","🎄","🎅🏻","🎁","🍭","🍬","🧝‍♂️"])
     
-    
     @IBAction func touchCard(_ sender: UIButton) {
         game.changeScore()
         if let cardNumber = cardButtons.index(of: sender) {
@@ -37,11 +36,7 @@ class ViewController: UIViewController
     }
     
     @IBAction func startNewGame(_ sender: UIButton) {
-        game.newGame()
-        game.shuffleCards()
-        pickTheme()
-        updateViewFromModel()
-        updateFlipCount()
+        newGame()
     }
     
     func updateFlipCount(){
@@ -83,5 +78,12 @@ class ViewController: UIViewController
             return emoji[card.identifier] ?? "?"
     }
     
+    func newGame() {
+        game.newGame()
+        game.shuffleCards()
+        pickTheme()
+        updateViewFromModel()
+        updateFlipCount()
+    }
 }
 
